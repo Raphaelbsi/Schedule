@@ -1,13 +1,13 @@
 version: "3"
-
+ 
 services:
   postgres:
-    image: "postgres:13.3"
-    environment:
-      POSTGRES_PASSWORD: example
+    image: "postgres:9.5"
     volumes:
       - postgres:/var/lib/postgresql/data
-
+    environment:
+      - POSTGRES_PASSWORD=postgres
+ 
   app:
     depends_on:
       - "postgres"
@@ -18,7 +18,8 @@ services:
     volumes:
       - .:/schedule
       - gems:/gems
-
+ 
+ 
 volumes:
   postgres:
   gems:
